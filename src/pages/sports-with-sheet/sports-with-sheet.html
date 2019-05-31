@@ -1,0 +1,31 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h5>Sports Sheet</h5>
+    <ion-item>
+        <ion-label>Select Competition Name</ion-label>
+        <ion-select interface="popover">
+            <ion-option *ngFor="let Competition of Competitions" (ionSelect)="select(Competition)" [value]="Competition">{{Competition.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <div class="button_div">
+        <button ion-button block (click)="save()">
+          Get Info
+        </button>
+    </div>
+    <h5 *ngIf="!sportsdata.length">Data not Found</h5>
+    <ion-list>
+        <ion-item *ngFor="let item of sportsdata;">
+            <h2>Sports Name: <span>{{item.sports_type}}</span></h2>
+            <h6>Records: <span> {{item.excel_records_uploaded}}</span></h6>
+            <button ion-button (click)="importlist()" *ngIf="item.excel_records_uploaded === '0'"> Import List</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="logout()">
+                                  <ion-icon name="md-log-out"></ion-icon>
+                                </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <form [formGroup]="information" (ngSubmit)="getdata()">
+        <ion-item>
+            <ion-label floating>BIB number</ion-label>
+            <ion-input type="number" formControlName="BIB"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!information.controls['BIB'].valid && information.controls['BIB'].touched">Please Enter BIB number</div>
+        </div>
+        <p class="button_div">OR</p>
+        <h6 class="button_div">Scan QR Code here</h6>
+        <div style="text-align: center;">
+            <img src="assets/imgs/qrcode.png" (click)="scan()">
+        </div>
+        <div class="button_div">
+            <button ion-button [disabled]="!information.valid" block>
+                    Get Details
+            </button>
+        </div>
+    </form>
+</ion-content>

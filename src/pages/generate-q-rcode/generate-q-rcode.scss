@@ -1,0 +1,16 @@
+page-generate-q-rcode {
+    .headerdiv {
+        background-color: color($colors, header);
+        color: white;
+        text-align: center !important;
+    }
+    .bodydiv {
+        background-color: #e95f5f;
+        color: white;
+        text-align: center !important;
+        border-bottom: 1px solid white;
+    }
+    .button_div {
+        margin-bottom: 10px;
+    }
+}

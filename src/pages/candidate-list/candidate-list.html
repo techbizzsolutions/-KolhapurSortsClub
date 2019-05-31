@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar color="header">
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-label>Select Competition Name</ion-label>
+        <ion-select interface="popover">
+            <ion-option *ngFor="let Competition of Competitions" (ionSelect)="select(Competition)" [value]="Competition">{{Competition.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select Sports Type</ion-label>
+        <ion-select interface="popover" [(ngModel)]="Sport">
+            <ion-option *ngFor="let Sport of Sports" [value]="Sport">{{Sport.sports_type_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <div class="button_div">
+        <button ion-button block (click)="getList('1')">
+              Get List
+        </button>
+    </div>
+    <ion-list>
+        <ion-item *ngFor="let item of listdata">
+            <ion-thumbnail *ngIf="item.qr_code" item-start>
+                <img [src]="item.qr_code">
+            </ion-thumbnail>
+            <h2>{{item.name}}</h2>
+            <p>{{item.bib_no}}</p>
+            <button *ngIf="item.qr_code" ion-button clear item-end (click)="retrieveFile(item,'2')">Download</button>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-fab *ngIf="listdata.length" bottom right (click)="downloadall()">
+        <button ion-fab mini><ion-icon name="md-download" ></ion-icon></button>
+    </ion-fab>
+</ion-content>

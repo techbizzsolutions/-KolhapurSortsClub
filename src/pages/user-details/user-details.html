@@ -1,0 +1,28 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="data">
+        <p>BIB NO: {{data.bib_no}}</p>
+        <p>NAME: {{data.name}}</p>
+        <p>EMAIL: {{data.email}}</p>
+        <p>AGE GROUP: {{data.age_group}}</p>
+        <p>GENDER: {{data.gender}}</p>
+        <p>SPORTS TYPE: {{data.sports_type}}</p>
+        <p>T-SHIRT: {{data.tshirt}}</p>
+    </div>
+    <div class="button_div">
+        <button ion-button *ngIf="counterType.counter != 1" (click)="submit()" block>
+        Submit
+        </button>
+        <button ion-button *ngIf="counterType.counter == 1" (click)="showAgree()" block>
+              Next
+      </button>
+    </div>
+</ion-content>

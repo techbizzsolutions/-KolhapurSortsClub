@@ -1,0 +1,33 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h5>Start Competition</h5>
+    <ion-item>
+        <ion-label>Select Competition Name</ion-label>
+        <ion-select interface="popover">
+            <ion-option *ngFor="let Competition of Competitions" (ionSelect)="select(Competition)" [value]="Competition">{{Competition.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select Sports Type</ion-label>
+        <ion-select interface="popover" [(ngModel)]="Sport">
+            <ion-option *ngFor="let Sport of Sports" [value]="Sport">{{Sport.sports_type_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item (click)="timeselect()">
+        <ion-label> Select start Time <span style="float: right;">{{time}}</span></ion-label>
+    </ion-item>
+    <div class="button_div">
+        <button ion-button block (click)="save()">
+          Save
+        </button>
+    </div>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+
+    <ion-navbar color="header">
+  
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <signature-pad [options]="signaturePadOptions"  id="signatureCanvas"></signature-pad>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+    <button ion-button full color="light" (click)="drawClear()">Clear</button>
+        </ion-col>
+        <ion-col col-6>
+    <button ion-button full color="secondary" (click)="drawComplete()">submit</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

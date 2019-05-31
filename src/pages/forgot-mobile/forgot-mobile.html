@@ -1,0 +1,29 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h5>Forgot Password</h5>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label floating>Mobile Number</ion-label>
+            <ion-input type="number" formControlName="Mobile"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Mobile'].valid && register.controls['Mobile'].touched">Please Enter a mobile number</div>
+        </div>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+            Submit
+        <ion-icon name="log-in"></ion-icon>
+      </button>
+        </div>
+    </form>
+</ion-content>

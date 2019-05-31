@@ -1,0 +1,49 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="md-list"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Kolhapur Sports Club</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="reload()">
+                <ion-icon name="md-refresh"></ion-icon>
+             </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h5>Report</h5>
+    <ion-item>
+        <ion-label>Select Competition Name</ion-label>
+        <ion-select interface="popover">
+            <ion-option *ngFor="let Competition of Competitions" (ionSelect)="select(Competition)" [value]="Competition">{{Competition.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select Sports Type</ion-label>
+        <ion-select interface="popover" [(ngModel)]="Sport">
+            <ion-option *ngFor="let Sport of Sports" [value]="Sport">{{Sport.sports_type_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-list radio-group (ionChange)="selectedValue($event)">
+        <ion-item>
+            <ion-radio item-left value="Counter wise report details" checked></ion-radio>
+            <ion-label>Counter wise report details</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-radio item-left value="Position wise report details"></ion-radio>
+            <ion-label>Position wise report details</ion-label>
+        </ion-item>
+    </ion-list>
+    <div class="button_div">
+        <button ion-button block (click)="Export()">
+              Export
+        </button>
+    </div>
+</ion-content>

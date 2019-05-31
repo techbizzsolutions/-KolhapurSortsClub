@@ -1,0 +1,30 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item-sliding *ngFor="let item of competitions;">
+            <ion-item (click)="itemclick(item)">
+                <h2>{{item.name}}</h2>
+                <h6 style="white-space: normal !important;">{{item.competition_sports_type}}</h6>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="primary" (click)="itemclick(item)">
+                    <ion-icon name="md-create"></ion-icon>
+                    Edit
+                 </button>
+                <button ion-button color="primary" (click)="deleteitem(item)">
+                    <ion-icon name="md-trash"></ion-icon>
+                     Delete
+                 </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+    <h5 *ngIf="!competitions.length">No data found</h5>
+</ion-content>

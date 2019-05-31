@@ -1,0 +1,46 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <h5>Contact Us</h5>
+    <ion-card>
+        <div>
+            <p class="marginp">Uday : <a href="tel:+91-9371111000">+91-9371111000</a></p>
+            <p class="marginp">Vaibhav : <a href="tel:+91-8208172409">+91-8208172409</a></p>
+            <p class="marginp">Email: <a href="mailto:kolhapursportsclub@gmail.com">kolhapursportsclub@gmail.com</a></p>
+            <hr>
+            <ion-list>
+                <ion-item-divider color="light">
+                    Members
+                </ion-item-divider>
+                <ion-item *ngFor="let list of lists">
+                    <p>
+                        {{list}}
+                    </p>
+                </ion-item>
+                <ion-item>
+                    <p style="white-space: normal !important;">
+                        These members are the heart and backbone of Kolhapur Sports Club.
+                    </p>
+                </ion-item>
+                <ion-item-divider color="light">
+                    About us in short
+                </ion-item-divider>
+                <ion-item>
+                    <p style="white-space: normal !important;    text-align: justify!important;">
+                        Kolhapur Sports Club is a charitable sports club registered with Charitable Commission Kolhapur. The club is formed by a team of athletes and triathletes in the year 2017 we are mostly ranging from the age group of 18 to 50 years old, although our youngest
+                        team athlete is 12 years old. Since the past 3 years, we have participated in various national and international marathons as well as triathlons. And in a short span of time, our team of athletes achieved titles such as Ironman
+                        and Ironman 70.3, while many others achieved podiums in national events
+                    </p>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-card>
+
+</ion-content>

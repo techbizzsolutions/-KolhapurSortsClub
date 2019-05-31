@@ -1,0 +1,68 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="deleteitem()">
+                              <ion-icon name="md-trash"></ion-icon>
+                            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <h5>Update Competition</h5>
+    <form [formGroup]="Compitition" (ngSubmit)="create()">
+        <ion-item>
+            <ion-label floating>Competition Name</ion-label>
+            <ion-input type="text" formControlName="CompetitionName"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!Compitition.controls['CompetitionName'].valid && Compitition.controls['CompetitionName'].touched">Please Enter Competition Name</div>
+        </div>
+        <ion-row>
+            <ion-col col-6>
+                <ion-item (click)="getDate()">
+                    <ion-label>{{ comdate }}</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col col-6>
+                <ion-item (click)="getTime()">
+                    <ion-label>{{ comtime }}</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-item>
+            <ion-label floating>No. of Counters involved </ion-label>
+            <ion-input type="number" formControlName="Counters"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!Compitition.controls['Counters'].valid && Compitition.controls['Counters'].touched">Please Enter No. of Counters involved</div>
+        </div>
+        <ion-item-group>
+            <ion-item-divider color="light" class="dividerpadding">
+                Sports Type <span style="float: right;">No. of Position</span>
+            </ion-item-divider>
+            <ion-row *ngFor="let item of sportsType;">
+                <ion-col col-9>
+                    <ion-item>
+                        <ion-label>{{item.sports_type_name}}</ion-label>
+                        <ion-checkbox [(ngModel)]="item.selected" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-3>
+                    <ion-item>
+                        <ion-input type="number" [(ngModel)]="item.total" [ngModelOptions]="{standalone: true}" placeholder="No."></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-item-group>
+        <div class="button_div">
+            <button ion-button [disabled]="!Compitition.valid" block>
+              Update
+        </button>
+        </div>
+    </form>
+</ion-content>

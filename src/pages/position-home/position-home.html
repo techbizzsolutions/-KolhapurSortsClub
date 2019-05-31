@@ -1,0 +1,47 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="logout()">
+                              <ion-icon name="md-log-out"></ion-icon>
+                            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <!-- <ion-item>
+        <ion-label>Select Sports Type</ion-label>
+        <ion-select interface="popover" [(ngModel)]="Sport">
+            <ion-option *ngFor="let Sport of Sports" [value]="Sport">{{Sport.name}}</ion-option>
+        </ion-select>
+    </ion-item> -->
+    <form [formGroup]="information" (ngSubmit)="create()">
+        <!-- <ion-item>
+            <ion-label floating>Position Name</ion-label>
+            <ion-input type="text" formControlName="Position"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!information.controls['Position'].valid && information.controls['Position'].touched">Please Enter Position Name</div>
+        </div> -->
+        <ion-item>
+            <ion-label floating>BIB number</ion-label>
+            <ion-input type="number" formControlName="BIB"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!information.controls['BIB'].valid && information.controls['BIB'].touched">Please Enter BIB number</div>
+        </div>
+        <!-- <ion-item (click)="timeselect()">
+            <ion-label> Select Time <span style="float: right;">{{time}}</span></ion-label>
+        </ion-item> -->
+        <div class="button_div">
+            <button ion-button [disabled]="!information.valid" block>
+                Submit
+          </button>
+        </div>
+    </form>
+</ion-content>

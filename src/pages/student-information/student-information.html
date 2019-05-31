@@ -1,0 +1,94 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <h5>Candidate Information</h5>
+    <ion-item>
+        <ion-label>Select Competition Name</ion-label>
+        <ion-select interface="popover">
+            <ion-option *ngFor="let Competition of Competitions" (ionSelect)="select(Competition)" [value]="Competition">{{Competition.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>BIB Number</ion-label>
+        <ion-input type="text" [(ngModel)]="bidnumber"></ion-input>
+    </ion-item>
+    <div class="button_div">
+        <button ion-button (click)="search()" block icon-right>
+          Search
+          <ion-icon name="md-search"></ion-icon>
+    </button>
+    </div>
+    <div *ngIf="tshirts.length">
+    <form [formGroup]="Candidate" (ngSubmit)="create()">
+        <ion-item>
+            <ion-label floating>BIB Number</ion-label>
+            <ion-input type="text" formControlName="Bidno"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!Candidate.controls['Bidno'].valid && Candidate.controls['Bidno'].touched">Please Enter BIB number</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text" formControlName="Name"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!Candidate.controls['Name'].valid && Candidate.controls['Name'].touched">Please Enter Name</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" formControlName="Email"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!Candidate.controls['Email'].valid && Candidate.controls['Email'].touched">Please Enter Email</div>
+        </div>
+         <ion-list radio-group [ngModelOptions]="{standalone: true}" [(ngModel)]="Gender">
+            <ion-list-header color='light'>
+                Gender
+            </ion-list-header>
+            <ion-row>
+                <ion-col col-6>
+                    <ion-item>
+                        <ion-label>Male</ion-label>
+                        <ion-radio value="Male"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-item>
+                        <ion-label>Female</ion-label>
+                        <ion-radio value="Female"></ion-radio>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+        <ion-item>
+            <ion-label>Select Sports Type</ion-label>
+            <ion-select interface="popover" [ngModelOptions]="{standalone: true}" [(ngModel)]="Sport" [compareWith]="compareFn">
+                <ion-option *ngFor="let Sport of Sports" [value]="Sport">{{Sport.sports_type_name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Select T-shirt Size</ion-label>
+            <ion-select interface="popover" [ngModelOptions]="{standalone: true}" [(ngModel)]="tshirt">
+                <ion-option *ngFor="let tshirt of tshirts" >{{tshirt.tshirt}}</ion-option>
+            </ion-select>
+        </ion-item>
+      <ion-item>
+            <ion-label>Select Age Group</ion-label>
+            <ion-select interface="popover" [ngModelOptions]="{standalone: true}" [(ngModel)]="Age">
+                <ion-option *ngFor="let Age of Ages" >{{Age.age_group}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <div class="button_div">
+            <button ion-button [disabled]="!Candidate.valid" block>
+              Submit
+        </button>
+        </div>
+    </form>
+</div> 
+</ion-content>

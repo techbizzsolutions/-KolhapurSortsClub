@@ -1,0 +1,39 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <h5>Import Data</h5>
+    <progress-bar *ngIf="showBar" [progress]="loadProgress"></progress-bar>
+    <ion-item>
+        <ion-label>Select Competition Name</ion-label>
+        <ion-select interface="popover">
+            <ion-option *ngFor="let Competition of Competitions" (ionSelect)="select(Competition)" [value]="Competition">{{Competition.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select Sports Type</ion-label>
+        <ion-select interface="popover" [(ngModel)]="Sport">
+            <ion-option *ngFor="let Sport of Sports" [value]="Sport">{{Sport.sports_type_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <p>
+        Select Candidate list
+        <button ion-button (click)="uploadimage()" icon-right>
+           Browse
+          <ion-icon name="md-document"></ion-icon>
+       </button>
+        <span>{{filename}}</span>
+    </p>
+    <div class="button_div">
+        <button ion-button block (click)="submit()">
+          Submit
+    </button>
+    </div>
+
+</ion-content>

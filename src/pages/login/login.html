@@ -1,0 +1,45 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Kolhapur Sports Club</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h5>Login</h5>
+    <ion-item>
+        <ion-label>Select Role</ion-label>
+        <ion-select interface="popover" [(ngModel)]="region">
+            <ion-option value="Admin">Admin</ion-option>
+            <ion-option value="Counter">Counter</ion-option>
+            <ion-option value="Position">Position</ion-option>
+        </ion-select>
+    </ion-item>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label floating>Mobile Number</ion-label>
+            <ion-input type="number" formControlName="Mobile"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Mobile'].valid && register.controls['Mobile'].touched">Please Enter a mobile number</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="text" formControlName="Password"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Password'].valid && register.controls['Password'].touched">Please Enter Password</div>
+        </div>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+            Login
+        <ion-icon name="log-in"></ion-icon>
+      </button>
+            <p (click)="login()"> Forgot Password ? Click here</p>
+        </div>
+    </form>
+</ion-content>
